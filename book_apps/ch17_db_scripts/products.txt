@@ -1,0 +1,2 @@
+11	1	tele	Fender Telecaster	A classic guitar	599.00	15.00	2011-10-30 09:15:44
+12	1	epilp	Epiphone Les Paul	A cheap alternative to the classic	399.00	10.00	2011-10-30 11:25:54

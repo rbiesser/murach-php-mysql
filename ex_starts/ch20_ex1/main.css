@@ -1,0 +1,185 @@
+/* the styles for the HTML elements */
+html {
+    background-color: rgb(192, 192, 192);
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    padding: 0 2em;
+    background-color: white;
+    border: 1px solid black;
+}
+header {
+    border-bottom: 2px solid black;
+    padding: .5em 0;
+}
+header h1 {
+    color: black;
+}
+main {
+
+}
+aside {
+    float: left;
+    width: 150px;
+}
+section {
+    float: left;
+    width: 500px;
+}
+footer {
+    clear: both;
+    border-top: 2px solid black;
+}
+footer p {
+    text-align: right;
+    font-size: 80%;
+}
+h1 {
+    font-size: 150%;
+    margin: .5em 0 .25em;
+}
+h2 {
+    font-size: 120%;
+    margin: .5em 0;
+}
+h1, h2 {
+    color: rgb(208, 133, 4);
+}
+p {
+    margin: .5em 0;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+li {
+    padding-bottom: .5em;
+}
+a {
+    color: rgb(41, 64, 124);
+    font-weight: bold;
+}
+a:hover {
+    color: rgb(208, 133, 4);
+}
+br {
+    clear: left;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+form {
+
+}
+/* the styles for classes */
+.right {
+    text-align: right;
+}
+.left {
+    text-align: left;
+}
+.no_bottom_margin {
+    margin-bottom: 0em;	
+}
+.first_paragraph {
+    margin-top: 0;	
+}
+.last_paragraph {
+    margin-bottom: 2em;	
+}
+
+/* the styles for the div tags that divide the page into sections */
+#left_column {
+    float: left;
+    width: 150px;
+}
+#right_column {
+    float: left;
+    padding-left: 1em;
+    padding-bottom: .5em;
+    width: 330px;
+}
+#left_column p img {
+    text-align: center;
+}
+#right_column ul {
+    list-style-type: disc;
+    padding-left: 2em;
+    margin-top: .25em;
+}
+/* Additional styles for the Product Manager application */
+#add_edit_product_form {
+    margin: .5em 0 2em;
+}
+#add_edit_product_form label {
+    width: 8em;
+    padding-right: 1em;
+    padding-bottom: .5em;
+    text-align: right;
+    float: left;
+}
+#add_edit_product_form input {
+    float: left;
+}
+#add_edit_product_form input[text] {
+    width: 25em;
+}
+#add_edit_product_form textarea {
+    width: 25em;
+}
+#formatting_directions h2 {
+    padding-top: 1em;
+}
+#formatting_directions ul {    
+    list-style-type: disc;
+    margin-top: 0;
+    padding-left: 1em;
+    padding-bottom: 1em;
+}
+#edit_button_form {
+    float: left;
+    margin-right: .5em;
+}
+.product_image_cell {
+    padding-top: 1em;
+    width: 8em;
+    text-align: center;
+}
+.product_info_cell {
+    margin: 0 0 1em;
+}
+.product_info_cell p {
+    margin: 0 0 .25em;
+}
+/********************************************************************
+* Styles for the Category Manager application
+********************************************************************/
+#category_table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#category_table td, th {
+    border: 1px dashed black;
+    margin: 0;
+    padding: .2em .5em;
+    vertical-align: middle;
+    text-align: left;
+}
+#category_table form {
+        margin: 0;
+}
+#add_category_form  {
+    margin: 0;
+    padding-bottom: 1em;
+}
+#add_category_form input {
+    margin-right: .5em;
+}

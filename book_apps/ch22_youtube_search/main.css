@@ -1,0 +1,84 @@
+/* the styles for the HTML elements */
+html {
+    background-color: rgb(192, 192, 192);
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    padding: 0 2em;
+    background-color: white;
+    border: 1px solid black;
+}
+header {
+    border-bottom: 2px solid black;
+    padding: .5em 0;
+}
+header h1 {
+    color: black;
+}
+main {
+    margin-bottom: 1em;
+}
+h1 {
+    font-size: 150%;
+    margin: .5em 0 .25em;
+}
+h2 {
+    font-size: 120%;
+    margin: .5em 0;
+}
+h1, h2 {
+    color: rgb(208, 133, 4);
+}
+p {
+    margin: .5em 0 1em;
+}
+.error {
+    color: red;
+}
+
+table {
+    font-size: 87.5%;
+}
+td {
+    padding-right: 1em;
+}
+form {
+    margin: .25em 0 .5em;
+}
+img {
+    border: none;
+    vertical-align: middle;
+    width: 125px;
+}
+input[type="submit"]{
+    width: 8em;
+}
+
+#email_form label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 1em;
+    margin-bottom: .75em;
+}
+#email_form input[type="text"] {
+    margin-top: 0;
+}
+#email_form br {
+    clear: both;
+}
+#email_form textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 70%;
+    height: 8em;
+    margin-bottom: .75em;
+}
+
+#cancel_form label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 1em;
+}

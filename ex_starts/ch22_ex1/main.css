@@ -1,0 +1,87 @@
+/* the styles for the HTML elements */
+body {
+    margin-top: 0;
+    background-color: rgb(128, 141, 159);
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 150%;
+    margin: 0;
+    padding: .5em 0 .25em;
+}
+h2 {
+    font-size: 120%;
+    margin: 0;
+    padding: .25em 0 .5em;
+}
+h1, h2 {
+    color: rgb(205, 163, 94);
+}
+a {
+    color: rgb(69, 85, 106);   
+    font-weight: bold;
+}
+a:hover {
+    color: blue;
+}
+table {
+    font-size: 87.5%;
+}
+td {
+    padding-right: 1em;
+}
+form {
+    margin: .25em 0 .5em;
+}
+img {
+    border: none;
+    vertical-align: middle;
+    width: 125px;
+}
+
+/* the styles for the div tags that divide the page into sections */
+#page {
+    width: 760px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgb(119, 75, 77);
+}
+#header {
+    margin: 0;
+    border-bottom: 2px solid rgb(119, 75, 77);
+    padding: .5em 2em;
+}
+#header h1 {
+    margin: 0;
+    padding: .5em 0;
+    color: black;
+}
+#main {
+    margin: 0;
+    padding: .5em 2em;
+}
+/* the styles for the HTML classes */
+
+#email_form label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 1em;
+    margin-bottom: .75em;
+}
+#email_form br {
+    clear: both;
+}
+#email_form textarea {
+    width: 70%;
+    height: 8em;
+    margin-bottom: .75em;
+}
+#cancel_form label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 1em;
+}
+
+

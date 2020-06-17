@@ -1,0 +1,70 @@
+/* the styles for the HTML elements */
+html {
+    background-color: rgb(192, 192, 192);
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    padding: 0 2em;
+    background-color: white;
+    border: 1px solid black;
+}
+header {
+    border-bottom: 2px solid black;
+    margin: .5em 0 1em;
+}
+header h1 {
+    color: black;
+}
+main {
+    margin-bottom: 1em;
+}
+h1 {
+    font-size: 150%;
+    margin: .5em 0;
+}
+h2 {
+    font-size: 120%;
+    margin: .25em 0 .5em;
+}
+h1, h2 {
+    color: rgb(208, 133, 4);
+}
+ul {
+    margin: 0 0 .5em 0;
+    padding: 0 0 0 2.5em;
+}
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+a {
+    color: rgb(41, 64, 124);
+    font-weight: bold;    
+}
+a:hover {
+    color: rgb(208, 133, 4);
+}
+p {
+    margin: 0;
+    padding-bottom: .5em;
+}
+form {
+    margin: 0;
+    padding: 0;
+}
+input[text], select {
+    width: 15em;
+}
+label {
+    width: 5em;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: .5em;
+    text-align: right;
+}
+br {
+    clear: left;
+}

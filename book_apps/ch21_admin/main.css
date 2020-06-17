@@ -1,0 +1,96 @@
+/* the styles for the HTML elements */
+html {
+    background-color: rgb(192, 192, 192);
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 760px;
+    margin: 0 auto;
+    padding: 0 2em;
+    background-color: white;
+    border: 1px solid black;
+}
+header {
+    border-bottom: 2px solid black;
+    padding: .5em 0;
+}
+header h1 {
+    color: black;
+}
+main {
+    margin-bottom: 1.5em;
+}
+aside {
+    float: left;
+    width: 150px;
+}
+section {
+    float: left;
+    width: 500px;
+}
+footer {
+    clear: both;
+    border-top: 2px solid black;
+}
+footer p {
+    text-align: right;
+    font-size: 80%;
+}
+h1 {
+    font-size: 150%;
+    margin: .5em 0 .25em;
+}
+h2 {
+    font-size: 120%;
+    margin: .5em 0;
+}
+h1, h2 {
+    color: rgb(208, 133, 4);
+}
+p {
+    margin: .5em 0;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+li {
+    padding-bottom: .5em;
+}
+a {
+    color: rgb(41, 64, 124);
+    font-weight: bold;
+}
+a:hover {
+    color: rgb(208, 133, 4);
+}
+br {
+    clear: left;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: .2em .5em .2em .5em;
+    vertical-align: top;
+    text-align: left;
+}
+form {
+
+}
+
+#login_form {
+    margin: 1em 0;
+}
+#login_form label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 1em;
+    margin-bottom: .75em;
+    margin-top: .25em;
+}
+input.text {
+    width: 15em;
+}
