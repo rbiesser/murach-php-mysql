@@ -1,14 +1,21 @@
 <?php
+/**
+ * 1. add $cart parameter to all functions
+ * 2. replace all occurrences of $_SESSION['cart13'] with $cart
+ * 3. functions now return $cart
+ */
+
 // Add an item to the cart
-function add_item($key, $quantity) {
+function add_item($cart, $key, $quantity) {
     global $products;
     if ($quantity < 1) return;
 
     // If item already exists in cart, update quantity
-    if (isset($_SESSION['cart13'][$key])) {
-        $quantity += $_SESSION['cart13'][$key]['qty'];
-        update_item($key, $quantity);
-        return;
+    if (isset($cart[$key])) {
+        $quantity += $cart[$key]['qty'];
+        // fix error from instructions !!!!
+        $cart = update_item($cart, $key, $quantity);
+        return $cart;
     }
 
     // Add item
@@ -20,28 +27,32 @@ function add_item($key, $quantity) {
         'qty'  => $quantity,
         'total' => $total
     );
-    $_SESSION['cart13'][$key] = $item;
+    $cart[$key] = $item;
+
+    return $cart;
 }
 
 // Update an item in the cart
-function update_item($key, $quantity) {
+function update_item($cart, $key, $quantity) {
     $quantity = (int) $quantity;
-    if (isset($_SESSION['cart13'][$key])) {
+    if (isset($cart[$key])) {
         if ($quantity <= 0) {
-            unset($_SESSION['cart13'][$key]);
+            unset($cart[$key]);
         } else {
-            $_SESSION['cart13'][$key]['qty'] = $quantity;
-            $total = $_SESSION['cart13'][$key]['cost'] *
-                     $_SESSION['cart13'][$key]['qty'];
-            $_SESSION['cart13'][$key]['total'] = $total;
+            $cart[$key]['qty'] = $quantity;
+            $total = $cart[$key]['cost'] *
+                     $cart[$key]['qty'];
+            $cart[$key]['total'] = $total;
         }
     }
+
+    return $cart;
 }
 
 // Get cart subtotal
-function get_subtotal () {
+function get_subtotal ($cart) {
     $subtotal = 0;
-    foreach ($_SESSION['cart13'] as $item) {
+    foreach ($cart as $item) {
         $subtotal += $item['total'];
     }
     $subtotal_f = number_format($subtotal, 2);
