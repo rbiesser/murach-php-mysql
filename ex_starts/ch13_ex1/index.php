@@ -14,10 +14,7 @@ session_start();
 // Create a cart array if needed
 if (empty($_SESSION['cart13'])) $_SESSION['cart13'] = array();
 
-// this seems superfluous, but the directions say do it this way
-// the previous line ensures that the cart is an array.
-// why not just $cart = $_SESSION['cart13']; ??
-$cart = empty($_SESSION['cart13']) ? array() : $_SESSION['cart13'];
+$cart = $_SESSION['cart13'];
 
 // Create a table of products
 $products = array();
@@ -42,7 +39,7 @@ switch($action) {
     case 'add':
         $key = filter_input(INPUT_POST, 'productkey');
         $quantity = filter_input(INPUT_POST, 'itemqty');
-        $cart = add_item($cart, $key, $quantity);
+        rbiesser\cart\add_item($cart, $key, $quantity);
         $_SESSION['cart13'] = $cart;
         include('cart_view.php');
         break;
@@ -51,7 +48,7 @@ switch($action) {
                 FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
         foreach($new_qty_list as $key => $qty) {
             if ($_SESSION['cart13'][$key]['qty'] != $qty) {
-                $cart = update_item($cart, $key, $qty);
+                rbiesser\cart\update_item($cart, $key, $qty);
                 $_SESSION['cart13'] = $cart;
             }
         }
