@@ -1,8 +1,8 @@
 <?php
 /**
- * 1. add $cart parameter to all functions
- * 2. replace all occurrences of $_SESSION['cart13'] with $cart
- * 3. functions now return $cart
+ * 4. add $cart parameter to all functions
+ *      - replace all occurrences of $_SESSION['cart13'] with $cart
+ *      - functions now return $cart
  */
 
 // Add an item to the cart
@@ -13,7 +13,7 @@ function add_item($cart, $key, $quantity) {
     // If item already exists in cart, update quantity
     if (isset($cart[$key])) {
         $quantity += $cart[$key]['qty'];
-        // fix error from instructions !!!!
+        // fix error from instruction screenshots !!!!
         $cart = update_item($cart, $key, $quantity);
         return $cart;
     }

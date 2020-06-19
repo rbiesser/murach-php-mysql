@@ -1,4 +1,10 @@
 <?php
+/**
+ * 5. use the $cart parameter
+ * 6. update the session cart after every action
+ * 7. update cart_view.php to use new definition for get_subtotal()
+ */
+
 // Start session management with a persistent cookie
 $lifetime = 60 * 60 * 24 * 14;    // 2 weeks in seconds
 // $lifetime = 0;                      // per-session cookie
@@ -9,6 +15,8 @@ session_start();
 if (empty($_SESSION['cart13'])) $_SESSION['cart13'] = array();
 
 // this seems superfluous, but the directions say do it this way
+// the previous line ensures that the cart is an array.
+// why not just $cart = $_SESSION['cart13']; ??
 $cart = empty($_SESSION['cart13']) ? array() : $_SESSION['cart13'];
 
 // Create a table of products
