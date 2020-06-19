@@ -1,4 +1,6 @@
 <?php
+    require('functions.php');
+    
     // get the data from the form
     $investment = filter_input(INPUT_POST, 'investment',
         FILTER_VALIDATE_FLOAT);
@@ -36,16 +38,12 @@
     }
 
     // calculate the future value
-    $future_value = $investment;
-    for ($i = 1; $i <= $years; $i++) {
-        $future_value = 
-            $future_value + ($future_value * $interest_rate * .01); 
-    }
+    $future_value = calculate_future_value($investment, $interest_rate, $years);
 
     // apply currency and percent formatting
-    $investment_f = '$'.number_format($investment, 2);
+    $investment_f = get_currency_format($investment);
     $yearly_rate_f = $interest_rate.'%';
-    $future_value_f = '$'.number_format($future_value, 2);
+    $future_value_f = get_currency_format($future_value);
 ?>
 <!DOCTYPE html>
 <html>
