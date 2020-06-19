@@ -65,6 +65,7 @@ switch($action) {
         break;
     case 'empty_cart':
         unset($_SESSION['cart13']);
+        unset($cart);
         include('cart_view.php');
         break;
 }
