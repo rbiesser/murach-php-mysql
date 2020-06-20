@@ -1,0 +1,1 @@
+You need to enable the mod-rewrite module by running <code>a2enmod rewrite</code>. See <a href="http://httpd.apache.org/docs/current/rewrite/intro.html">http://httpd.apache.org/docs/current/rewrite/intro.html</a> for more info.
