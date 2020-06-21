@@ -21,12 +21,15 @@
                 <form method="post" action="/cart/add">
                     <div class="grid">
                         <div class="row">
-                            <h2><?php echo $item->getDescription() ?></h2>
+                            <h2><?php echo $item->getName() ?></h2>
                         </div>
                         <div class="row">
                             <h3>
                                 <?php echo $item->getPrice() ?>
                             </h3>
+                        </div>
+                        <div class="row">
+                            <p><?php echo $item->getDescription() ?></p>
                         </div>
                         <div class="row">
                             <label for="quantity">Quantity</label>

@@ -1,7 +1,7 @@
 <?php
-require dirname(__DIR__) . '/Entity/Item.php';
+require dirname(__DIR__) . '/Entity/Product.php';
 
-class ItemsTable {
+class ProductsTable {
 
     function getCountOfItems() {
         return 20;
@@ -24,7 +24,7 @@ class ItemsTable {
 
         // for testing
         for ($i = $start; $i < $end +1 ; $i++) {
-            array_push($items, new Item($i, 'Product Name ' . $i, 5.99));
+            array_push($items, new Product($i, 'Product Name ' . $i, 'A Description', 5.99));
         }
 
         return $items;
@@ -37,7 +37,7 @@ class ItemsTable {
         if ($items_count > 0) {
             // for testing
             for ($i = 1; $i <= $items_count; $i++) {
-                array_push($items, new Item($i, 'Product Name ' . $i, 5.99));
+                array_push($items, new Product($i, 'Product Name ' . $i, 'A Description', 5.99));
             }
         }
 
@@ -45,6 +45,6 @@ class ItemsTable {
     }
 
     function getItemByCode($code) {
-        return new Item($code, 'Product Name ' . $code, 5.99);
+        return new Product($code, 'Product Name ' . $code, 'A Description', 5.99);
     }
 }

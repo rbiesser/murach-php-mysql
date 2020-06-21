@@ -1,17 +1,17 @@
 <?php
-require dirname(__DIR__) . '/Model/Table/ItemsTable.php';
+require dirname(__DIR__) . '/Model/Table/ProductsTable.php';
 
 // get list of items
-$ItemsDB = new ItemsTable;
+$ProductsDB = new ProductsTable;
 
 // sqli
 // verify that page is indeed a number because this is going to the db
 $current_page = isset($path[3]) ? $path[3] : 1;
 $items_per_page = 9; // 9 looks best with current card view
 
-$items_count = $ItemsDB->getCountOfItems();
+$items_count = $ProductsDB->getCountOfItems();
 if ($items_count > 0) {
-    $items = $ItemsDB->getPaginatedItems($current_page, $items_per_page);
+    $items = $ProductsDB->getPaginatedItems($current_page, $items_per_page);
 }
 
 

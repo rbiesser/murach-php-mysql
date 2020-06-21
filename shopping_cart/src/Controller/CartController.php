@@ -6,6 +6,7 @@
 if ($http_method == 'POST') {
     echo $http_method;
     var_dump($_POST);
+    // $_SESSION['cart'] = 
 }
 
 $items = array('a');

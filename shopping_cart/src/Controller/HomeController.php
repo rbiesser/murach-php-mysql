@@ -1,10 +1,10 @@
 <?php
-require dirname(__DIR__) . '/Model/Table/ItemsTable.php';
+require dirname(__DIR__) . '/Model/Table/ProductsTable.php';
 
 // get list of items
-$ItemsDB = new ItemsTable;
+$ProductsDB = new ProductsTable;
 
-$items = $ItemsDB->getFeaturedItems();
+$items = $ProductsDB->getFeaturedItems();
 
 require dirname(__DIR__) . '/View/theme/header.php';
 require dirname(__DIR__) . '/View/Home.php';

@@ -3,12 +3,12 @@
     <img src="<?php echo $item->getArtwork() ?>">
 </div>
 <div class="content">
-    <div class="header"><?php echo $item->getDescription() ?>
+    <div class="header"><?php echo $item->getName() ?>
     <span class="right floated">
     <?php echo $item->getPrice() ?>
     </span></div>
     <div class="description">
-        <?php echo $item->getPrice() ?>
+        <?php echo $item->getDescription() ?>
     </div>
 </div>
 <!-- <div class="ui bottom attached button">

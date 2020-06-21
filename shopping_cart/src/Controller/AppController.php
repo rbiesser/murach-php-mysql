@@ -20,7 +20,7 @@ switch ($controller) {
         require dirname(__DIR__) . '/Controller/ShopController.php';
         break;
     case 'view':
-        require dirname(__DIR__) . '/Controller/ViewItemController.php';
+        require dirname(__DIR__) . '/Controller/ProductController.php';
         break;
     case 'cart':
         require dirname(__DIR__) . '/Controller/CartController.php';

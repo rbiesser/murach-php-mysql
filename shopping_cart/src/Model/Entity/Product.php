@@ -1,16 +1,20 @@
 <?php
-class Item
+class Product
 {
+    private $productID;
     private $code;
     private $artwork;
+    private $name;
     private $description;
     private $price;
+    private $dateAdded;
 
-    function __construct($code, $description, $price, $artwork = '/img/placeholder.png') {
+    function __construct($code, $name, $description, $price, $artwork = '/img/placeholder.png') {
         $this->code = $code;
-        $this->artwork = $artwork;
+        $this->name = $name;
         $this->description = $description;
         $this->price = $price;
+        $this->artwork = $artwork;
     }
 
     function getCode() {
@@ -19,6 +23,10 @@ class Item
 
     function getArtwork() {
         return $this->artwork;
+    }
+
+    function getName() {
+        return $this->name;
     }
 
     function getDescription() {
