@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  php:
+    build: '../../docker/php/'
+    container_name: php
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/
+    depends_on: 
+      - db
+  db:
+    image: mysql:5
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ../../docker/mysql/_create_db/:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    depends_on: 
+      - db
