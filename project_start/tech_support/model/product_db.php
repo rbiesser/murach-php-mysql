@@ -11,11 +11,11 @@ class ProductDB {
             // $category = new Category($row['categoryID'],
             //                          $row['categoryName']);
             $product = new Product(
-                // $category,
                                    $row['productCode'],
-                                   $row['productName'],
-                                   $row['listPrice']);
-            $product->setId($row['productID']);
+                                   $row['name'],
+                                   $row['version'],
+                                   $row['releaseDate']);
+            // $product->setId($row['productID']);
             $products[] = $product;
         }
         return $products;
@@ -57,29 +57,35 @@ class ProductDB {
         return $product;
     }
 
-    public static function deleteProduct($product_id) {
+    public static function deleteProduct($code) {
         $db = Database::getDB();
         $query = "DELETE FROM products
-                  WHERE productID = '$product_id'";
+                  WHERE productCode = '$code'";
         $row_count = $db->exec($query);
+        if (!$row_count)
+            throw new Exception('Error deleting from database');
         return $row_count;
     }
 
     public static function addProduct($product) {
         $db = Database::getDB();
 
-        $category_id = $product->getCategory()->getID();
+        // $category_id = $product->getCategory()->getID();
         $code = $product->getCode();
         $name = $product->getName();
-        $price = $product->getPrice();
+        $version = $product->getVersion();
+        $releaseDate = $product->getReleaseDate();
 
         $query =
             "INSERT INTO products
-                 (categoryID, productCode, productName, listPrice)
+                 (productCode, `name`, `version`, releaseDate)
              VALUES
-                 ('$category_id', '$code', '$name', '$price')";
+                 ('$code', '$name', '$version', '$releaseDate')";
 
         $row_count = $db->exec($query);
+
+        if (!$row_count)
+            throw new Exception('Error inserting into database');
         return $row_count;
     }
 }

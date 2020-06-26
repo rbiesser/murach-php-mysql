@@ -126,23 +126,23 @@ textarea {
     width: 15em;
 }
 
-#aligned {
+#add_product_form {
     margin: .5em 0 2em;
 }
-#aligned label {
+#add_product_form label {
     width: 8em;
     margin-top: .2em;
     margin-right: 1em;
     margin-bottom: .5em;
     float: left;
 }
-#aligned input {
+#add_product_form input {
     float: left;
 }
-#aligned input[text] {
+#add_product_form input[text] {
     width: 15em;
 }
-#aligned .message {
+#add_product_form .message {
     margin-left: .5em;
     width: 15em;
 }
