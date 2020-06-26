@@ -22,11 +22,11 @@
         <?php echo $fields->getField('version')->getHTML(); ?>
         <br>
 
-        <!-- <label>Release Date:</label>
+        <label>Release Date:</label>
         <input type="input" name="releaseDate"
                value="<?php echo htmlspecialchars($releaseDate);?>">
         <?php echo $fields->getField('releaseDate')->getHTML(); ?>
-        <br> -->
+        <br>
 
         <label>&nbsp;</label>
         <input type="submit" value="Add Product">

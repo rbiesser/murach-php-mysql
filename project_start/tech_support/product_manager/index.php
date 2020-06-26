@@ -15,8 +15,10 @@ $validate = new Validate();
 $fields = $validate->getFields();
 $fields->addField('code');
 $fields->addField('name');
+// could eventually format version automatically
 $fields->addField('version');
-$fields->addField('releaseDate');
+// could eventually be a date picker
+$fields->addField('releaseDate', 'Use \'yyyy-mm-dd\' format.');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -66,7 +68,7 @@ if ($action == 'list_products') {
     // not in the text, but it's also not required
     // php doesn't require variable declarations.
     // will display an error in inputs if you have error_reporting(E_ALL);
-    $code = $name = $version = '';
+    $code = $name = $version = $releaseDate = '';
 
     // $categories = CategoryDB::getCategories();
     include('product_add.php');
@@ -82,9 +84,11 @@ if ($action == 'list_products') {
     $validate->text('code', $code, true, 1, 10);
     $validate->text('name', $name, true, 1, 50);
     $validate->number('version', $version); // decimal(18, 1)
-    // $validate->text('releaseDate', $releaseDate); // datetime
+    $validate->pattern('releaseDate', $releaseDate
+                    , '/\d{4}-\d{2}-\d{2}/' // not right regex
+                    , 'Use \'yyyy-mm-dd\' format.'); // datetime
 
-    $releaseDate = date("Y-m-d H:i:s"); // use current time
+    // $releaseDate = date("Y-m-d H:i:s"); // use current time
 
     if ($fields->hasErrors()) {
         // $categories = CategoryDB::getCategories();
