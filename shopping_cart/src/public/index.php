@@ -1,2 +1,2 @@
 <?php
-require dirname(__DIR__) . '/Controller/AppController.php';
+require dirname(__DIR__) . '/config/requirements.php';

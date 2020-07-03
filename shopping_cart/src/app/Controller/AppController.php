@@ -1,6 +1,4 @@
 <?php
-require dirname(__DIR__) . '/config/requirements.php';
-
 // GET, POST
 $http_method = $_SERVER['REQUEST_METHOD'];
 
