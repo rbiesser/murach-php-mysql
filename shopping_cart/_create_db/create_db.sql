@@ -5,17 +5,6 @@ DROP DATABASE IF EXISTS shopping_cart;
 CREATE DATABASE shopping_cart;
 USE shopping_cart;  -- MySQL command
 
--- create the users and grant priveleges to those users
-GRANT SELECT, INSERT, DELETE, UPDATE
-ON shopping_cart.*
-TO user@'%'
-IDENTIFIED BY 'pa55word';
-
-GRANT SELECT
-ON products
-TO tester@'%'
-IDENTIFIED BY 'pa55word';
-
 -- create the tables for the database
 CREATE TABLE customers (
   customerID        INT            NOT NULL   AUTO_INCREMENT,
@@ -93,3 +82,14 @@ CREATE TABLE administrators (
   lastName          VARCHAR(255)   NOT NULL,
   PRIMARY KEY (adminID)
 );
+
+-- create the users and grant priveleges to those users
+GRANT SELECT, INSERT, DELETE, UPDATE
+ON shopping_cart.*
+TO user@'%'
+IDENTIFIED BY 'pa55word';
+
+GRANT SELECT
+ON products
+TO tester@'%'
+IDENTIFIED BY 'pa55word';
