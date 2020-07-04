@@ -2,7 +2,7 @@
 require dirname(__DIR__) . '/Model/Table/ProductsTable.php';
 
 // get list of items
-$ProductsDB = new ProductsTable;
+$ProductsDB = new ProductsTable($db);
 
 $items = $ProductsDB->getFeaturedItems();
 

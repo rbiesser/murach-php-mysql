@@ -2,49 +2,60 @@
 require dirname(__DIR__) . '/Entity/Product.php';
 
 class ProductsTable {
+    protected $db;
+
+    function __construct(PDO $db)
+    {
+        $this->db = $db;
+    }
 
     function getCountOfItems() {
-        return 20;
+        $query = 'SELECT COUNT(*) FROM products';
+        $result = $this->db->query($query);
+        return $result->fetchColumn();
     }
 
     function getPaginatedItems($page = 1, $items_per_page = 9) {
-        $items = array();
+        $page = $page * $items_per_page - $items_per_page;
 
-        $start = 1;
-        $end = $items_per_page;
-
-        if ($page > 1) {
-            $start = (($page - 1) * $items_per_page) + 1;
-            $end = $start -1 + $items_per_page;
-        }
-        // finally, only show actual number
-        if ($end > $this->getCountOfItems()) {
-            $end = $this->getCountOfItems();
+        $query = "SELECT * FROM products LIMIT $page, $items_per_page";
+        $result = $this->db->query($query);
+        $products = array();
+        foreach ($result as $row) {
+            $product = new Product($row);
+            $products[] = $product;
         }
 
-        // for testing
-        for ($i = $start; $i < $end +1 ; $i++) {
-            array_push($items, new Product($i, 'Product Name ' . $i, 'A Description', 5.99));
+        if (empty($products)) {
+            throw new Exception('No items found!');
         }
 
-        return $items;
+        return $products;
     }
 
     function getFeaturedItems() {
-        $items = array();
-        $items_count = ($this->getCountOfItems() > 3) ? 3 : $this->getCountOfItems();
-
-        if ($items_count > 0) {
-            // for testing
-            for ($i = 1; $i <= $items_count; $i++) {
-                array_push($items, new Product($i, 'Product Name ' . $i, 'A Description', 5.99));
-            }
+        // $query = 'SELECT * FROM products WHERE isFeatured = 1';
+        $query = 'SELECT * FROM products LIMIT 3';
+        $result = $this->db->query($query);
+        $products = array();
+        foreach ($result as $row) {
+            $product = new Product($row);
+            $products[] = $product;
         }
-
-        return $items;
+        return $products;
     }
 
     function getItemByCode($code) {
-        return new Product($code, 'Product Name ' . $code, 'A Description', 5.99);
+        $query = "SELECT * FROM products
+                  WHERE productCode = '$code'";
+        $result = $this->db->query($query);
+        $row = $result->fetch();
+        
+        if (empty($row)) {
+            throw new Exception('Item not found!');
+        }
+        
+        $product = new Product($row);
+        return $product;
     }
 }

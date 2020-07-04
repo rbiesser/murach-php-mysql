@@ -9,12 +9,13 @@ class Product
     private $price;
     private $dateAdded;
 
-    function __construct($code, $name, $description, $price, $artwork = '/img/placeholder.png') {
-        $this->code = $code;
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
-        $this->artwork = $artwork;
+    function __construct($product)
+    {
+        $this->code = $product['productCode'];
+        $this->name = $product['productName'];
+        $this->description = $product['description'];
+        $this->price = $product['listPrice'];
+        $this->artwork = '/img/placeholder.png';
     }
 
     function getCode() {
@@ -35,5 +36,9 @@ class Product
 
     function getPrice() {
         return $this->price;
+    }
+
+    function validate() {
+        return true;
     }
 }

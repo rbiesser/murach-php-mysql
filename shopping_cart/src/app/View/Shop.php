@@ -1,5 +1,9 @@
 <?php if (empty($items)): ?>
-    <p>No items found</p>            
+    <div class="ui error message">
+        <div class="header">
+            <?php echo $error_message ?>
+        </div>
+    </div> 
 <?php else: ?>
     <div class="ui three cards">
     <?php foreach($items as $item): ?>

@@ -8,7 +8,7 @@
     <?php echo $item->getPrice() ?>
     </span></div>
     <div class="description">
-        <?php echo $item->getDescription() ?>
+        <?php // echo $item->getDescription() ?>
     </div>
 </div>
 <!-- <div class="ui bottom attached button">

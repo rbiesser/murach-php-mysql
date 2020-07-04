@@ -1,13 +1,18 @@
 <?php if (empty($item)): ?>
-    <p>Item not found</p>            
+    <div class="ui error message">
+        <div class="header">
+            <?php echo $error_message ?>
+        </div>
+        <p>Try one of these choices</p>
+    </div>         
 <?php else: ?>
     <a href="/cart">
-    <div class="ui success message hidden">
-    <div class="header">
-        Your item has been added to the cart.
-    </div>
-    <p>Click this message to view the items in your cart.</p>
-    </div>
+        <div class="ui success message hidden">
+            <div class="header">
+                Your item has been added to the cart.
+            </div>
+            <p>Click this message to view the items in your cart.</p>
+        </div>
     </a>
 
     <p><a href="/shop">Back to gallery</a></p>

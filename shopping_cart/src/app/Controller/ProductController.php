@@ -1,11 +1,17 @@
 <?php
 require dirname(__DIR__) . '/Model/Table/ProductsTable.php';
 
-$ProductsDB = new ProductsTable;
+$ProductsDB = new ProductsTable($db);
 
-$item_code = isset($path[2]) ? $path[2] : '';
+$item_code = isset($path[2]) ? filter_var($path[2]) : '';
 
-$item = $ProductsDB->getItemByCode($item_code);
+try {
+    $item = $ProductsDB->getItemByCode($item_code);
+} catch (Exception $e) {
+    $item = null;
+    $error_message = $e->getMessage();
+}
+
 
 // get list of items
 $featured_items = $ProductsDB->getFeaturedItems();
