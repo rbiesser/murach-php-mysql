@@ -29,6 +29,9 @@ switch ($controller) {
     case 'register':
         require dirname(__DIR__) . '/Controller/RegisterController.php';
         break;
+    case 'admin':
+        require dirname(__DIR__) . '/Controller/AdminController.php';
+        break;
     default:
         require dirname(__DIR__) . '/Controller/ErrorController.php';
 }
