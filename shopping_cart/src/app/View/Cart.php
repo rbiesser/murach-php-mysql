@@ -1,4 +1,4 @@
-<?php if (empty($items)): ?>
+<?php if (empty($cart)): ?>
     <p>No items in cart</p>            
 <?php else: ?>
     <h2>Cart</h2>
@@ -11,29 +11,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <td data-label="Name">James</td>
-        <td data-label="Age">24</td>
-        <td data-label="Job">Engineer</td>
-        </tr>
-        <tr>
-        <td data-label="Name">Jill</td>
-        <td data-label="Age">26</td>
-        <td data-label="Job">Engineer</td>
-        </tr>
-        <tr>
-        <td data-label="Name">Elyse</td>
-        <td data-label="Age">24</td>
-        <td data-label="Job">Designer</td>
-        </tr>
+        <?php foreach($cart as $item_code => $quantity): ?>
+            <tr>
+                <td><?php echo $items[$item_code]->getName() ?></td>
+                <td><?php echo $quantity ?></td>
+                <td><?php echo $items[$item_code]->getPrice() ?></td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
     </table>
 
-    <div class="ui left action input">
-    <a class="ui teal labeled icon button" href="/checkout">
-        <i class="cart icon"></i>
-        Checkout
-    </a>
-    <input type="text" value="$52.03">
+    <div class="ui right action input">
+        <a class="ui teal labeled icon button" href="/checkout">
+            <i class="cart icon"></i>
+            Checkout
+        </a>
+        <input type="text" value="<?php echo $total_price ?>">
     </div>
 <?php endif ?>

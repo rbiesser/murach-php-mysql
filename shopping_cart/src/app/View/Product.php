@@ -6,14 +6,16 @@
         <p>Try one of these choices</p>
     </div>         
 <?php else: ?>
+    <?php if (!empty($message)): ?>
     <a href="/cart">
-        <div class="ui success message hidden">
+        <div class="ui <?php echo $message['type'] ?> message">
             <div class="header">
-                Your item has been added to the cart.
+            <?php echo $message['header'] ?>
             </div>
-            <p>Click this message to view the items in your cart.</p>
+            <p><?php echo $message['body'] ?></p>
         </div>
     </a>
+    <?php endif ?>
 
     <p><a href="/shop">Back to gallery</a></p>
 

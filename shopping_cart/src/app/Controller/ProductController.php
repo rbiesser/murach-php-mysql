@@ -5,6 +5,11 @@ $ProductsDB = new ProductsTable($db);
 
 $item_code = isset($path[2]) ? filter_var($path[2]) : '';
 
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
+}
+
 try {
     $item = $ProductsDB->getItemByCode($item_code);
 } catch (Exception $e) {
