@@ -10,9 +10,9 @@ body {
     background-color: white;
     border: 1px solid black;
 }
-main {
+/* main {
 
-}
+} */
 h1 {
     font-size: 150%;
     margin: .5em 0;
@@ -53,9 +53,9 @@ td, th {
     padding: .2em .5em .2em .5em;
     text-align: left;
 }
-form {
+/* form {
 
-}
+} */
 /* the styles for classes */
 .right {
     text-align: right;
