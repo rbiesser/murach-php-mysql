@@ -1,10 +1,11 @@
 version: "3.8"
 services:
   php:
-    build: '../docker/php/'
+    build: .
     container_name: php
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./tech_support:/var/www/html/
     depends_on: 
@@ -17,7 +18,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
-      - ./:/docker-entrypoint-initdb.d
+      - ./create_db/:/docker-entrypoint-initdb.d
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin

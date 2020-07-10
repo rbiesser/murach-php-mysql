@@ -87,7 +87,7 @@ class Validate {
         if ($field->hasError()) { return; }
 
         // Call the pattern method to validate a phone number
-        $pattern = '/^[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4}$/';
+        $pattern = '/^\([[:digit:]]{3}\) [[:digit:]]{3}-[[:digit:]]{4}$/';
         $message = 'Invalid phone number.';
         $this->pattern($name, $value, $pattern, $message, $required);
     }
@@ -108,7 +108,7 @@ class Validate {
         // Split email address on @ sign and check parts
         $parts = explode('@', $value);
         if (count($parts) < 2) {
-            $field->setErrorMessage('At sign required.');
+            $field->setErrorMessage('Not a valid email.');
             return;
         }
         if (count($parts) > 2) {

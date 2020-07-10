@@ -6,7 +6,7 @@
     <ul>
         <li><a href="product_manager">Manage Products</a></li>
         <li><a href="under_construction.php">Manage Technicians</a></li>
-        <li><a href="under_construction.php">Manage Customers</a></li>
+        <li><a href="customer_manager">Manage Customers</a></li>
         <li><a href="under_construction.php">Create Incident</a></li>
         <li><a href="under_construction.php">Assign Incident</a></li>
         <li><a href="under_construction.php">Display Incidents</a></li>
