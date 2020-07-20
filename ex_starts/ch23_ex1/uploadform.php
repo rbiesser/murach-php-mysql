@@ -14,7 +14,12 @@
               action="." method="POST"
               enctype="multipart/form-data">
             <input type="hidden" name="action" value="upload">
-            <input type="file" name="file1"><br>
+            <!-- add multiple inputs or multiple attribute? -->
+            <!-- accept limits the browser, but should still be checked on the server -->
+            <input type="file" name="file1" accept="image/png"><br>
+            <input type="file" name="file2" accept="image/png, image/jpeg"><br>
+            <input type="file" name="file3" accept="image/png, image/jpeg"><br>
+            <!-- <input type="file" name="file3[]" accept="image/png, image/jpeg" multiple><br> -->
             <input id="upload_button" type="submit" value="Upload">
         </form>
         <h2>Images in the directory</h2>

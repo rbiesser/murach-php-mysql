@@ -7,17 +7,21 @@ function process_image($dir, $filename) {
     $ext = substr($filename, $i);
 
     // Set up the read path
-    $image_path = $dir . DIRECTORY_SEPARATOR . $filename;
+    $image_path = $dir . $filename;
 
     // Set up the write paths
     $image_path_400 = $dir . $image_name . '_400' . $ext;
     $image_path_100 = $dir . $image_name . '_100' . $ext;
+    $image_path_250 = $dir . $image_name . '_250' . $ext;
 
     // Create an image that's a maximum of 400x300 pixels
     resize_image($image_path, $image_path_400, 400, 300);
 
     // Create a thumbnail image that's a maximum of 100x100 pixels
     resize_image($image_path, $image_path_100, 100, 100);
+    
+    // Create the third thumbnail
+    resize_image($image_path, $image_path_250, 250, 250);
 }
 
 /*******************************************
@@ -25,6 +29,8 @@ function process_image($dir, $filename) {
  ********************************************/
 function resize_image($old_image_path, $new_image_path,
         $max_width, $max_height) {
+
+    // echo "<br>resize_image: " . $new_image_path;
 
     // Get image type
     $image_info = getimagesize($old_image_path);
@@ -45,6 +51,12 @@ function resize_image($old_image_path, $new_image_path,
             $image_to_file = 'imagepng';
             break;
         default:
+            // breaks UI
+            // would be better to set and display message instead of exit
+            // but then changing the rest of the logic below
+            // remove the file
+            echo $image_info; // image_info will be empty
+            echo '<br>old_image_path: ' . $old_image_path . '<br>';
             echo 'File must be a JPEG, GIF, or PNG image.';
             exit;
     }
