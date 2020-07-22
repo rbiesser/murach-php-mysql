@@ -67,10 +67,10 @@ switch ($action) {
         $validate->verify('verify', $password, $verify);
         $validate->text('first_name', $firstName);
         $validate->text('last_name', $lastName);
-        $validate->text('address', $address);
-        $validate->text('city', $city);
-        $validate->state('state', $state);
-        $validate->zip('zip', $zip);
+        $validate->text('address', $address, false);
+        $validate->text('city', $city, false);
+        $validate->state('state', $state, false);
+        $validate->zip('zip', $zip, false);
         $validate->phone('phone', $phone);
         $validate->cardType('card_type', $cardType);
         $validate->cardNumber('card_number', $cardDigits, $cardType);

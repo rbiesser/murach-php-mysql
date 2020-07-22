@@ -126,23 +126,155 @@ textarea {
     width: 15em;
 }
 
-#aligned {
+/* add_product_form */
+#add_product_form {
     margin: .5em 0 2em;
 }
-#aligned label {
+#add_product_form label {
     width: 8em;
     margin-top: .2em;
     margin-right: 1em;
     margin-bottom: .5em;
     float: left;
 }
-#aligned input {
+#add_product_form input {
     float: left;
 }
-#aligned input[text] {
+#add_product_form input[text] {
     width: 15em;
 }
-#aligned .message {
+#add_product_form .message {
     margin-left: .5em;
     width: 15em;
+}
+
+/* add_customer_form */
+#add_customer_form {
+    margin: .5em 0 2em;
+}
+#add_customer_form label {
+    width: 8em;
+    margin-top: .2em;
+    margin-right: 1em;
+    margin-bottom: .5em;
+    float: left;
+}
+#add_customer_form input {
+    float: left;
+}
+#add_customer_form  input[text] {
+    width: 15em;
+}
+#add_customer_form  select {
+    width: 11.5em;
+}
+
+#add_customer_form .message {
+    margin-left: .5em;
+    width: 15em;
+}
+
+#customer_search_form {
+    margin: 0;
+}
+
+#customer_search_form label {
+    margin-top: .5em;
+}
+
+#customer_search_form input {
+    margin-top: .5em;
+}
+
+/* copy #add_product_form to create generic form */
+form {
+    margin: .5em 0 2em;
+}
+form label {
+    /* width: 8em; */
+    margin-top: .2em;
+    margin-right: 1em;
+    margin-bottom: .5em;
+    float: left;
+}
+form input {
+    margin-right: 1em;
+    float: left;
+}
+form input[text] {
+    width: 15em;
+}
+form .message {
+    margin-left: .5em;
+    width: 15em;
+}
+
+#delete_customer_form {
+    margin: .2em;
+}
+
+/* Bootstrap styles */
+
+.btn {
+    color: #fff;
+    font-size: .875rem;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
 }

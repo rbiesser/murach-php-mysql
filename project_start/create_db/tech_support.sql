@@ -237,7 +237,7 @@ INSERT INTO incidents VALUES
 
 CREATE TABLE countries (
     countryCode char(2) NOT NULL,
-    countryName varchar(20) NOT NULL,
+    countryName varchar(50) NOT NULL,
     PRIMARY KEY (countryCode)
 );
 
@@ -498,5 +498,5 @@ INSERT INTO administrators VALUES
 -- Create a user named ts_user
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON *
-TO ts_user@localhost
+TO ts_user@'%'
 IDENTIFIED BY 'pa55word';

@@ -67,9 +67,29 @@ class Validate {
         if ($field->hasError()) { return; }
 
         // Call the pattern method to validate a phone number
-        $pattern = '/^[[:digit:]]{3}-[[:digit:]]{3}-[[:digit:]]{4}$/';
+        $pattern = '/^\d{3}-\d{3}-\d{4}$/';
         $message = 'Invalid phone number.';
         $this->pattern($name, $value, $pattern, $message, $required);
+    }
+
+    public function birthdate($name, $value, $required = true) {
+        $field = $this->fields->getField($name);
+
+        // Call the text method and exit if it yields an error
+        $this->text($name, $value, $required);
+        if ($field->hasError()) { return; }
+
+        // Call the pattern method to validate a date
+        $pattern = '/^(0?[1-9]|1[0-2])\/(0?[1-9]|[12][[:digit:]]|3[01])\/[[:digit:]]{4}$/';
+        $message = 'Invalid date format.';
+        $this->pattern($name, $value, $pattern, $message, $required);
+
+        $birthdate = new \DateTime($value);
+        $now = new \DateTime();
+        if ($birthdate > $now) {
+            $field->setErrorMessage('Birthdate can\'t be in the future.');
+            return;
+        }
     }
 
     public function email($name, $value, $required = true) {
@@ -81,61 +101,15 @@ class Validate {
             return;
         }
 
-        // Call the text method and exit if it yields an error
-        $this->text($name, $value, $required);
-        if ($field->hasError()) { return; }
-
-        // Split email address on @ sign and check parts
-        $parts = explode('@', $value);
-        if (count($parts) < 2) {
-            $field->setErrorMessage('At sign required.');
-            return;
+        // Use filter_var method to validate the email address
+        $email = filter_var($value, FILTER_VALIDATE_EMAIL);
+            
+        // If email address is not valid, set error message and exit
+        if ($email === false) {
+            $field->setErrorMessage("Invalid email address");
+        } else {
+            $field->clearErrorMessage();                
         }
-        if (count($parts) > 2) {
-            $field->setErrorMessage('Only one at sign allowed.');
-            return;
-        }
-        $local = $parts[0];
-        $domain = $parts[1];
-
-        // Check lengths of local and domain parts
-        if (strlen($local) > 64) {
-            $field->setErrorMessage('Username part too long.');
-            return;
-        }
-        if (strlen($domain) > 255) {
-            $field->setErrorMessage('Domain name part too long.');
-            return;
-        }
-
-        // Patterns for address formatted local part
-        $atom = '[[:alnum:]_!#$%&\'*+\/=?^`{|}~-]+';
-        $dotatom = '(\.' . $atom . ')*';
-        $address = '(^' . $atom . $dotatom . '$)';
-
-        // Patterns for quoted text formatted local part
-        $char = '([^\\\\"])';
-        $esc  = '(\\\\[\\\\"])';
-        $text = '(' . $char . '|' . $esc . ')+';
-        $quoted = '(^"' . $text . '"$)';
-
-        // Combined pattern for testing local part
-        $localPattern = '/' . $address . '|' . $quoted . '/';
-
-        // Call the pattern method and exit if it yields an error
-        $this->pattern($name, $local, $localPattern,
-                'Invalid username part.');
-        if ($field->hasError()) { return; }
-
-        // Patterns for domain part
-        $hostname = '([[:alnum:]]([-[:alnum:]]{0,62}[[:alnum:]])?)';
-        $hostnames = '(' . $hostname . '(\.' . $hostname . ')*)';
-        $top = '\.[[:alnum:]]{2,6}';
-        $domainPattern = '/^' . $hostnames . $top . '$/';
-
-        // Call the pattern method
-        $this->pattern($name, $domain, $domainPattern,
-                'Invalid domain name part.');
     }
 
     public function password($name, $password, $required = true) {
@@ -146,7 +120,7 @@ class Validate {
             return;
         }
 
-        $this->text($name, $password, $required, 6);
+        $this->text($name, $password, $required, 8); // require at least 8 characters $min
         if ($field->hasError()) { return; }
 
         // Patterns to validate password
@@ -154,7 +128,7 @@ class Validate {
         $charClasses[] = '[:digit:]';
         $charClasses[] = '[:upper:]';
         $charClasses[] = '[:lower:]';
-        $charClasses[] = '_-';
+        // $charClasses[] = '_-';
 
         $pw = '/^';
         $valid = '[';
@@ -172,7 +146,8 @@ class Validate {
             return;
         } else if ($pwMatch != 1) {
             $field->setErrorMessage(
-                    'Must have one each of upper, lower, digit, and "-_".');
+                    // 'Must have one each of upper, lower, digit, and "-_".');
+                    'Must have one each of upper, lower, and digit.');
             return;
         }
     }
@@ -211,7 +186,7 @@ class Validate {
         $this->text($name, $value, $required);
         if ($field->hasError()) { return; }
 
-        $pattern = '/^[[:digit:]]{5}(-[[:digit:]]{4})?$/';
+        $pattern = '/^\d{5}(-\d{4})?$/';
         $message = 'Invalid zip code.';
         $this->pattern($name, $value, $pattern, $message, $required);
     }
