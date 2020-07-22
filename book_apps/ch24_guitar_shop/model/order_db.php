@@ -103,7 +103,7 @@ function get_order($order_id) {
 
 function get_order_items($order_id) {
     global $db;
-    $query = 'SELECT * FROM OrderItems WHERE orderID = :order_id';
+    $query = 'SELECT * FROM orderItems WHERE orderID = :order_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':order_id', $order_id);
     $statement->execute();

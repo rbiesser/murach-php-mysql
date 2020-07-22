@@ -1,10 +1,11 @@
 version: "3.8"
 services:
   php:
-    build: '../../docker/php/'
+    build: .
     container_name: php
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www/html/
     depends_on: 

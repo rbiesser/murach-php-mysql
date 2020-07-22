@@ -45,7 +45,7 @@ function get_product_order_count($product_id) {
     global $db;
     $query = '
         SELECT COUNT(*) AS orderCount
-        FROM orderitems
+        FROM orderItems
         WHERE productID = :product_id';
     try {
         $statement = $db->prepare($query);
@@ -94,7 +94,7 @@ function update_product($product_id, $code, $name, $desc,
                         $price, $discount, $category_id) {
     global $db;
     $query = '
-        UPDATE Products
+        UPDATE products
         SET productName = :name,
             productCode = :code,
             description = :desc,
