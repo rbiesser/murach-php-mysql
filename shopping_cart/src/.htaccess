@@ -1,5 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     RewriteRule    ^(\.well-known/.*)$ $1 [L]
     RewriteRule    ^$    public/    [L]
     RewriteRule    (.*)  public/$1    [L]

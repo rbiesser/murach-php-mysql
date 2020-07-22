@@ -5,6 +5,7 @@ services:
     container_name: php
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./src/:/var/www/html/
     depends_on: 
