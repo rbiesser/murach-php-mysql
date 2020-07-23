@@ -10,4 +10,7 @@ It is probably better to use .htaccess to create clean urls, but book examples u
 
 Controllers are index.php files
 
-
+#### MySQL Query log
+```bash
+docker exec mysql tail -f /var/log/mysql/query.log
+```

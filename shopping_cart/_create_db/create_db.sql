@@ -10,12 +10,34 @@ CREATE TABLE customers (
   customerID        INT            NOT NULL   AUTO_INCREMENT,
   emailAddress      VARCHAR(255)   NOT NULL,
   password          VARCHAR(60)    NOT NULL,
-  firstName         VARCHAR(60)    NOT NULL,
-  lastName          VARCHAR(60)    NOT NULL,
+  firstName         VARCHAR(60)               DEFAULT NULL,
+  lastName          VARCHAR(60)               DEFAULT NULL,
   shipAddressID     INT                       DEFAULT NULL,
   billingAddressID  INT                       DEFAULT NULL,  
   PRIMARY KEY (customerID),
   UNIQUE INDEX emailAddress (emailAddress)
+);
+
+CREATE TABLE sessions (
+  sessionID        INT            NOT NULL   AUTO_INCREMENT,
+  customerID       INT                       DEFAULT NULL,
+  sessionKey       VARCHAR(32)    NOT NULL,
+  firstVisitTime   TIMESTAMP                 DEFAULT CURRENT_TIMESTAMP,
+  lastVisitTime    TIMESTAMP                 DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  isLoggedIn       BOOLEAN        NOT NULL   DEFAULT FALSE,
+  PRIMARY KEY (sessionID)
+);
+
+-- sessionViews could keep track of product views for marketing analysis
+
+CREATE TABLE sessionItems (
+  itemID            INT            NOT NULL   AUTO_INCREMENT,
+  sessionID         INT            NOT NULL,
+  productID         INT            NOT NULL,
+  quantity          INT NOT NULL,
+  PRIMARY KEY (itemID), 
+  INDEX cartID (sessionID), 
+  INDEX productID (productID)
 );
 
 CREATE TABLE addresses (

@@ -1,85 +1,125 @@
 <?php
-// use cookie or database?
-// if you want the user to pick up a session on another machine, use database.
-require dirname(__DIR__) . '/Model/Table/ProductsTable.php';
 
-$ProductsDB = new ProductsTable($db);
+// echo $action;
+// var_dump($_POST);
+// die();
 
 $total_price = 0;
 
-if (!isset($_SESSION['cart'])) {
-    // echo 'new cart session';
-    // var_dump($_SESSION);
-    $_SESSION['cart'] = array();
-}
+// if (!isset($_SESSION['cart'])) {
+//     // echo 'new cart session';
+//     // var_dump($_SESSION);
+//     $_SESSION['cart'] = array();
+// }
 
-$cart = $_SESSION['cart'];
+// $cart = $_SESSION['cart'];
+$cart = $session->getCart();
 
 $items = array();
 
-// handle add item to cart
-if ($http_method == 'POST') {
-    // echo $http_method;
-    // var_dump($_POST);
-    
-    $item_code = filter_input(INPUT_POST, 'code');
-    $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT);
+// all actions are performed on a product one at a time
+// if ($http_method == 'POST') {
 
-    // validate item_code
     try {
-        // var_dump($quantity);
-        $item = $ProductsDB->getItemByCode($item_code);
-        // $items[$item_code] = $item;
-        // $total_price += ($item->getPrice() * $quantity);
+        $item_code = filter_input(INPUT_POST, 'code');
+        $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT);
 
-        // if the item was found in the db, add to cart
-        if (isset($cart[$item_code])) {
-            // echo 'update cart';
-            $cart[$item_code] += $quantity;
-        } else {
-            // echo 'new item in cart';
-            $cart[$item_code] = $quantity;
+        switch ($action) {
+            case 'add':
+                $item = ProductsTable::getItemByCode($item_code);
+                
+                $session->addItemToCart($item, $quantity);
+                
+                // this would be the most complete example of how to display message with header and type.
+                $_SESSION['message'] = array(
+                    'type' => 'success',
+                    'header' => $item->getName() . ' has been added to your cart.',
+                    'body' => ''
+                );
+                
+                header("Location: " . $_SERVER['HTTP_REFERER']);
+            break;
+            case 'edit':
+                $item = ProductsTable::getItemByCode($item_code);
+
+                $session->updateItemInCart($item, $quantity);
+
+                $_SESSION['message'] = array(
+                    'type' => 'success',
+                    'header' => $item->getName() . ' has been updated.',
+                    'body' => ''
+                );
+
+                header("Location: /cart");
+                break;
+            case 'delete':
+                // var_dump($item);
+                // echo 'delete';
+                // die();
+                $item = ProductsTable::getItemByCode($item_code);
+
+                $session->removeItemFromCart($item);
+                $_SESSION['message'] = array(
+                    'type' => 'success',
+                    'header' => $item->getName() . ' has been remove from your cart.',
+                    'body' => ''
+                );
+
+                header("Location: /cart");
+            break;
+            case 'empty':
+                $session->emptyCart();
+
+                $_SESSION['message'] = array(
+                    'type' => 'success',
+                    'header' => 'Your cart has been emptied.',
+                    'body' => ''
+                );
+
+                header("Location: /cart");
+                break;
+            case 'checkout':
+                require dirname(__DIR__) . '/Controller/CheckoutController.php';
+                break;
         }
-    
-        // save cart back to session variable
-        $_SESSION['cart'] = $cart;
-
-        $_SESSION['message'] = array(
-            'type' => 'success', 
-            'header' => 'Your item has been added to the cart.', 
-            'body' => 'Click this message to view the items in your cart.'
-        );
-
     } catch (Exception $e) {
         // $item = null;
         $error_message = $e->getMessage();
 
         $_SESSION['message'] = array(
-            'type' => 'error', 
-            'header' => '', 
+            'type' => 'error',
+            'header' => '',
             'body' => $error_message
         );
     }
+    // echo $http_method;
+    // var_dump($_POST);
 
-    header("Location: ".$_SERVER['HTTP_REFERER']);
+    // die();
+    //rewrite this code to work with database
+
+
+    // validate item_code
+// } else {
+//     switch ($action) {
+//         case 'checkout':
+//             require dirname(__DIR__) . '/Controller/CheckoutController.php';
+//             break;
+//     }
+
+// }
+
+// else viewing the cart
+
+foreach ($cart as $key => $itemInCart) {
+    $item = ProductsTable::getItem($itemInCart['productID']);
+    $cart[$key]['product'] = $item;
+    $total_price += ($item->getPrice() * $itemInCart['quantity']);
 }
 
-foreach($cart as $item_code => $quantity) {
-    // lookup product
-    try {
-        // var_dump($quantity);
-        $item = $ProductsDB->getItemByCode($item_code);
-        $items[$item_code] = $item;
-        $total_price += ($item->getPrice() * $quantity);
-    } catch (Exception $e) {
-        // $item = null;
-        // $error_message = $e->getMessage();
-    }
-}
+// var_dump($cart);
+// die();
 
-
-
-// var_dump($_SESSION);
 
 require dirname(__DIR__) . '/View/theme/header.php';
 require dirname(__DIR__) . '/View/Cart.php';

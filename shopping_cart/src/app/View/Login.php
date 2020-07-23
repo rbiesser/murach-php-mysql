@@ -3,7 +3,7 @@
         <h2 class="ui image header">
             <!-- <img src="assets/images/logo.png" class="image"> -->
             <div class="content">
-                Register your account
+                Log-in to your account
             </div>
         </h2>
         <form class="ui large form" method="post" action="">
@@ -20,7 +20,7 @@
                         <input type="password" name="password" placeholder="Password">
                     </div>
                 </div>
-                <button type="submit" class="ui fluid large blue submit button">Register</button>
+                <button type="submit" class="ui fluid large blue submit button">Login</button>
             </div>
 
             <div class="ui error message <?php echo (isset($message))? 'visible': '' ?>">
@@ -29,6 +29,9 @@
 
         </form>
 
+        <div class="ui message">
+            First time customer? <a href="register">Register</a>
+        </div>
     </div>
 </div>
 
@@ -36,8 +39,8 @@
     $('.ui.form')
         .form({
             fields: {
-                email: 'email',
-                password: ['minLength[6]', 'empty'],
+                email: 'empty',
+                password: ['empty'],
             }
         });
 </script>

@@ -3,10 +3,16 @@
 // debug
 error_reporting(E_ALL);
 
-session_start();
-
 require dirname(__DIR__) . '/config/database.php';
 
-$db = Database::getDB();
+$directories = array(
+    '../app/Model/Table/',
+    '../app/Model/Entity/'
+);
+foreach ($directories as $directory) {
+    foreach(glob($directory . "*.php") as $class) {
+        include_once $class;
+    }
+}
 
-require dirname(__DIR__) . '/app/Controller/AppController.php';
+// var_dump(get_declared_classes());

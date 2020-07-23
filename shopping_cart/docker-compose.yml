@@ -12,6 +12,7 @@ services:
       - db
   db:
     image: mysql:5
+    # build: './docker/mysql/'
     container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -19,6 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - ./_create_db/:/docker-entrypoint-initdb.d
+    #   - ./conf.d:/etc/mysql/conf.d
+    command: mysqld --general-log=1 --general-log-file=/var/log/mysql/query.log
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin

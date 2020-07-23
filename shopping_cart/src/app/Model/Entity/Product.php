@@ -11,11 +11,16 @@ class Product
 
     function __construct($product)
     {
+        $this->productID = $product['productID'];
         $this->code = $product['productCode'];
         $this->name = $product['productName'];
         $this->description = $product['description'];
         $this->price = $product['listPrice'];
         $this->artwork = '/img/placeholder.png';
+    }
+
+    function getProductID() {
+        return $this->productID;
     }
 
     function getCode() {
