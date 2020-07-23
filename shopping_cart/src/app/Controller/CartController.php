@@ -33,8 +33,8 @@ $items = array();
                 // this would be the most complete example of how to display message with header and type.
                 $_SESSION['message'] = array(
                     'type' => 'success',
-                    'header' => $item->getName() . ' has been added to your cart.',
-                    'body' => ''
+                    'header' => 'Item has been added to your cart.',
+                    'body' => 'View <a href="/cart">' . $item->getName() . '</a> in your cart.'
                 );
                 
                 header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -61,8 +61,8 @@ $items = array();
                 $session->removeItemFromCart($item);
                 $_SESSION['message'] = array(
                     'type' => 'success',
-                    'header' => $item->getName() . ' has been remove from your cart.',
-                    'body' => ''
+                    'header' => 'Cart Updated',
+                    'body' => '<a href="/shop/view/' . $item->getCode() . '">' . $item->getName() . '</a> has been remove from your cart.'
                 );
 
                 header("Location: /cart");

@@ -16,22 +16,31 @@
         <thead>
             <tr>
                 <th class="three wide"></th>
-                <th></th>
+                <th class="twelve wide"></th>
+                <th class="three wide"></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($addresses as $address) : ?>
                 <tr>
                     <td>
-                        <button type="button" class="ui button">Edit Address</button>
+                        <a href="/address" type="button" class="ui inverted secondary button">Edit Address</a>
                     </td>
                     <td>
                         <h3><?php echo $address->getOneLiner() ?></h3>
+                    </td>
+                    <td class="center aligned">
+                    <form method="post" action="/cart/delete">
+                            <input type="hidden" name="action" value='delete' />
+                            <input type="hidden" name="code" value="" />
+                            <button type="submit" class="ui inverted red button">Remove</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach ?>
         <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>

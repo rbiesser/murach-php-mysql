@@ -1,5 +1,4 @@
 <?php
-// require dirname(__DIR__) . '/Entity/Product.php';
 
 class Address {
     private $addressID;

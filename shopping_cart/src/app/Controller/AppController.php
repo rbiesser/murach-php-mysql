@@ -46,7 +46,7 @@ switch ($controller) {
     //     require dirname(__DIR__) . '/Controller/RegisterController.php';
     //     break;
     case 'admin':
-        require dirname(__DIR__) . '/Controller/AdminController.php';
+        require dirname(__DIR__) . '/Controller/Admin/AdminController.php';
         break;
     case 'account':
         require dirname(__DIR__) . '/Controller/AccountController.php';
