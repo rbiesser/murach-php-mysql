@@ -30,9 +30,9 @@
                         <h3><?php echo $address->getOneLiner() ?></h3>
                     </td>
                     <td class="center aligned">
-                    <form method="post" action="/cart/delete">
+                    <form method="post" action="/address/delete">
                             <input type="hidden" name="action" value='delete' />
-                            <input type="hidden" name="code" value="" />
+                            <input type="hidden" name="addressID" value="<?php echo $address->getAddressID() ?>" />
                             <button type="submit" class="ui inverted red button">Remove</button>
                         </form>
                     </td>

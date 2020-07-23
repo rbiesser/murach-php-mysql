@@ -1,12 +1,8 @@
 <?php
-// switch ($action) {
-//     case 'GET':
-//         require dirname(__DIR__) . '/Controller/RegisterController.php';
-//         break;
-// }
 
 if ($http_method == 'POST') {
-    
+
+    $addressID = filter_input(INPUT_POST, 'addressID');
     $line1 = filter_input(INPUT_POST, 'line1');
     $line2 = filter_input(INPUT_POST, 'line2');
     $city = filter_input(INPUT_POST, 'city');
@@ -23,7 +19,7 @@ if ($http_method == 'POST') {
 
     $addressData = array();
     // null means cannot update through this method
-    $addressData['addressID'] = null;
+    $addressData['addressID'] = $addressID;
     $addressData['customerID'] = null;
     $addressData['line1'] = $line1;
     $addressData['line2'] = $line2;
@@ -33,17 +29,34 @@ if ($http_method == 'POST') {
 
     $address = new Address($addressData);
 
-    // session can only update info for currently logged in user
-    $address->save($session);
+    switch ($action) {
+        case 'add':
+            // session can only update info for currently logged in user
+            $address->save($session);
 
-    $_SESSION['message'] = array(
-        'type' => 'success',
-        'header' => 'Address saved.',
-        'body' => ''
-    );
+            $_SESSION['message'] = array(
+                'type' => 'success',
+                'header' => 'Address saved.',
+                'body' => ''
+            );
 
-    header("Location: /account");
+            header("Location: /account");
+            break;
 
+        case 'delete':
+            $customer = $session->getCustomer();
+
+            $customer->deleteAddress($address);
+
+            $_SESSION['message'] = array(
+                'type' => 'success',
+                'header' => 'Address deleted.',
+                'body' => ''
+            );
+
+            header("Location: /account");
+            break;
+    }
 } else {
 
     // pull in form data
@@ -55,5 +68,4 @@ if ($http_method == 'POST') {
     require dirname(__DIR__) . '/View/theme/header.php';
     require dirname(__DIR__) . '/View/Address.php';
     require dirname(__DIR__) . '/View/theme/footer.php';
-
 }

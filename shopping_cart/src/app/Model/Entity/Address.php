@@ -35,6 +35,10 @@ class Address {
         return $address;
     }
 
+    function getAddressID() {
+        return $this->addressID;
+    }
+
     function getLine1() {
         return $this->line1;
     }

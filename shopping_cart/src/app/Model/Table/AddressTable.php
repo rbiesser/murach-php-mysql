@@ -40,6 +40,7 @@ class AddressTable {
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
             display_db_error($error_message);
+            die('insert error');
         }
     }
 
@@ -68,6 +69,25 @@ class AddressTable {
 
             $lastInsertId = $db->lastInsertId();
             return $lastInsertId;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+
+    public static function deleteAddress($customer, $address) {
+        $db = Database::getDB();
+        $query = 'DELETE from addresses 
+                    WHERE
+                        addressID = :addressID
+                    AND customerID = :customerID';
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':addressID', $address->getAddressID());
+            $statement->bindValue(':customerID', $customer->getCustomerID());
+            $statement->execute();
+            $statement->closeCursor();
+
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
             display_db_error($error_message);

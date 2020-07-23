@@ -24,18 +24,7 @@ switch ($action) {
         $addresses = $customer->getSavedAddresses();
         $orders = $customer->getOrders();
 
-       
-        // var_dump($addresses);
 
-        // die();
-        
-        // var_dump($shippingAddress);
-        
-        // var_dump($billingAddress);
-        
-        // die();
-        
-        
         require dirname(__DIR__) . '/View/theme/header.php';
         require dirname(__DIR__) . '/View/Account.php';
         require dirname(__DIR__) . '/View/theme/footer.php';

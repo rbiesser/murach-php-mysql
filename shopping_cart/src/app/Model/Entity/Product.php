@@ -19,31 +19,38 @@ class Product
         $this->artwork = '/img/placeholder.png';
     }
 
-    function getProductID() {
+    function getProductID()
+    {
         return $this->productID;
     }
 
-    function getCode() {
+    function getCode()
+    {
         return $this->code;
     }
 
-    function getArtwork() {
+    function getArtwork()
+    {
         return $this->artwork;
     }
 
-    function getName() {
+    function getName()
+    {
         return $this->name;
     }
 
-    function getDescription() {
+    function getDescription()
+    {
         return $this->description;
     }
 
-    function getPrice() {
+    function getPrice()
+    {
         return $this->price;
     }
 
-    function validate() {
+    function validate()
+    {
         return true;
     }
 }

@@ -33,18 +33,9 @@ switch ($controller) {
     case 'shop':
         require dirname(__DIR__) . '/Controller/ShopController.php';
         break;
-        // case 'view':
-        //     require dirname(__DIR__) . '/Controller/ProductController.php';
-        //     break;
     case 'cart':
         require dirname(__DIR__) . '/Controller/CartController.php';
         break;
-        // case 'checkout':
-        //     require dirname(__DIR__) . '/Controller/CheckoutController.php';
-        //     break;
-    // case 'register':
-    //     require dirname(__DIR__) . '/Controller/RegisterController.php';
-    //     break;
     case 'admin':
         require dirname(__DIR__) . '/Controller/Admin/AdminController.php';
         break;
@@ -54,14 +45,6 @@ switch ($controller) {
     case 'address':
         require dirname(__DIR__) . '/Controller/AddressController.php';
         break;
-
-    // case 'login':
-    // case 'logout':
-    //     require dirname(__DIR__) . '/Controller/LoginController.php';
-    //     break;
-    // case 'profile':
-    //     require dirname(__DIR__) . '/Controller/ProfileController.php';
-    //     break;
     default:
         require dirname(__DIR__) . '/Controller/ErrorController.php';
 }

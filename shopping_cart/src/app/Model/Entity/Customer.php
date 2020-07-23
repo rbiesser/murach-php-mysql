@@ -22,6 +22,10 @@ class Customer {
         $this->billingAddressID = $customer['billingAddressID'];
     }
 
+    function getCustomerID() {
+        return $this->customerID;
+    }
+
     function getFullName() {
         return $this->firstName . ' ' . $this->lastName;
     }
@@ -52,6 +56,10 @@ class Customer {
 
     function getSavedAddresses() {
         return AddressTable::getAddressesByCustomer($this->customerID);
+    }
+
+    function deleteAddress($address) {
+        return AddressTable::deleteAddress($this, $address);
     }
 
     function getOrders() {
