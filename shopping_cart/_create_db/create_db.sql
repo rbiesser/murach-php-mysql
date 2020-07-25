@@ -48,7 +48,7 @@ CREATE TABLE addresses (
   city              VARCHAR(40)    NOT NULL,
   state             VARCHAR(2)     NOT NULL,
   zipCode           VARCHAR(10)    NOT NULL,
-  phone             VARCHAR(12)    NOT NULL   DEFAULT NULL,
+  phone             VARCHAR(12)               DEFAULT NULL,
   disabled          TINYINT(1)     NOT NULL   DEFAULT 0,
   PRIMARY KEY (addressID),
   INDEX customerID (customerID)
