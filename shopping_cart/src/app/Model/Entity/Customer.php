@@ -62,9 +62,9 @@ class Customer {
         return AddressTable::deleteAddress($this, $address);
     }
 
-    function getOrders() {
-        return array();
-    }
+    // function getOrders() {
+    //     return array();
+    // }
 
     function save($customerID) {
         return CustomersTable::updateCustomer($customerID, $this);

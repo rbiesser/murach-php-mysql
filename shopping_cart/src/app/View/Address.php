@@ -104,12 +104,11 @@
     $('.ui.form')
         .form({
             fields: {
-                firstName: 'empty',
-                lastName: 'empty',
-                email: 'email',
-                password: ['minLength[6]', 'empty'],
-                skills: ['minCount[2]', 'empty'],
-                terms: 'checked'
+                line1: 'empty',
+                line2: 'empty',
+                city: 'empty',
+                state: ['empty'],
+                zipCode: ['empty']
             }
         });
 </script>

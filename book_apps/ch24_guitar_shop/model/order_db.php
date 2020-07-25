@@ -77,7 +77,7 @@ function add_order_item($order_id, $product_id,
                         $item_price, $discount, $quantity) {
     global $db;
     $query = '
-        INSERT INTO OrderItems (orderID, productID, itemPrice,
+        INSERT INTO orderItems (orderID, productID, itemPrice,
                                 discountAmount, quantity)
         VALUES (:order_id, :product_id, :item_price, :discount, :quantity)';
     $statement = $db->prepare($query);
